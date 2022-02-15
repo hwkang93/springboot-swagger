@@ -1,0 +1,43 @@
+plugins {
+	/*id 'org.springframework.boot' version '2.6.3'*/
+	id 'org.springframework.boot' version '2.4.0'
+	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+	id 'java'
+}
+
+group = 'hwkang'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '11'
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+
+	compileOnly 'org.projectlombok:lombok:1.18.22'
+	annotationProcessor 'org.projectlombok:lombok:1.18.22'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+	//https://mvnrepository.com/artifact/io.springfox/springfox-swagger-ui
+	implementation group: 'io.springfox', name: 'springfox-swagger-ui', version: '2.9.2'
+	implementation (group: 'io.springfox', name: 'springfox-swagger2', version: '2.9.2') {
+		exclude module: 'swagger-annotations'
+		exclude module: 'swagger-models'
+	}
+
+	implementation 'io.swagger:swagger-annotations:1.5.21'
+	implementation 'io.swagger:swagger-models:1.5.21'
+
+}
+
+tasks.named('test') {
+	useJUnitPlatform()
+}
