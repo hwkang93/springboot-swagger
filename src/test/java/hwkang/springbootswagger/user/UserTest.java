@@ -20,7 +20,7 @@ public class UserTest {
 
     @Test
     void 사용자_목록_조회_성공() {
-        List<UserDto> userList = userService.getUserList();
+        List<UserDto> userList = userService.findAll();
 
         assertThat(userList.size()).isEqualTo(1);
     }
@@ -32,6 +32,12 @@ public class UserTest {
     }
 
     @Test
+    void 사용자_검색_실패_존재하지않는사용자() {
+
+        assertThrows(NoSuchElementException.class, () -> userService.findByUserId(10));
+    }
+
+    @Test
     void 사용자_추가_성공() {
         UserDto paramUser = UserDto.builder()
                 .userName("chr")
@@ -40,7 +46,7 @@ public class UserTest {
 
         userService.insertUser(paramUser);
 
-        List<UserDto> userDtoList = userService.getUserList();
+        List<UserDto> userDtoList = userService.findAll();
 
         assertThat(userDtoList.size()).isEqualTo(2);
     }
