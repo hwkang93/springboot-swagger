@@ -20,9 +20,8 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDto> getUserList() {
-
-        return userDtoList;
+    public List<UserDto> findAll() {
+        return this.userDtoList;
     }
 
     @Override

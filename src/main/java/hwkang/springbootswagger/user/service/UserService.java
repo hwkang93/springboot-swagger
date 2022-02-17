@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface UserService {
 
-    List<UserDto> getUserList();
+    List<UserDto> findAll();
 
     UserDto findByUserId(long userId);
 

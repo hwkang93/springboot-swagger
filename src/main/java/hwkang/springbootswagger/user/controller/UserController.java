@@ -9,7 +9,6 @@ import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
@@ -31,8 +30,8 @@ public class UserController {
             responseContainer = "List"
     )
     @GetMapping("/users")
-    public ResponseEntity<BasicResponse> getUserList() {
-        List<UserDto> userList = userService.getUserList();
+    public ResponseEntity<BasicResponse> findAll() {
+        List<UserDto> userList = userService.findAll();
 
         return ResponseEntity.ok().body(new SuccessResponse<>(userList));
     }
