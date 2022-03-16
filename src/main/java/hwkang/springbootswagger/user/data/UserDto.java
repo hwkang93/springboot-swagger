@@ -4,9 +4,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.*;
 
-@ApiModel
 @Getter @Setter
 @NoArgsConstructor
+@ApiModel(value = "사용자 정보", description = "사용자 정보 객체")
 public class UserDto {
 
     @ApiModelProperty(value = "사용자 아이디")
